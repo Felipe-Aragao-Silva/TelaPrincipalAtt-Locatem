@@ -1,0 +1,17 @@
+<!-- Carrosel do banner que vai ficar p/ dps, pois preciso da base para fazer  -->
+
+<!--<CarouselView HeightRequest="150" Margin="0,20">
+
+    <CarouselView.ItemsSource>
+        <x:Array Type="{x:Type ImageSource}">
+            <ImageSource>banner1.png</ImageSource>
+            <ImageSource>banner2.png</ImageSource>
+            <ImageSource>banner3.png</ImageSource>
+        </x:Array>
+    </CarouselView.ItemsSource>
+    <CarouselView.ItemTemplate>
+        <DataTemplate>
+            <Image Source="{Binding .}" Aspect="AspectFill"/>
+        </DataTemplate>
+    </CarouselView.ItemTemplate>
+</CarouselView>-->
