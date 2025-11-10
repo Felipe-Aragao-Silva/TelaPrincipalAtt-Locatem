@@ -57,7 +57,7 @@
                     </HorizontalStackLayout>
 
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer  CommandParameter="Início"/>
+                        <TapGestureRecognizer Tapped="OnMenuItemTapped" CommandParameter="Início"/>
                     </Grid.GestureRecognizers>
 
                     <VisualStateManager.VisualStateGroups>
@@ -91,7 +91,7 @@
                     </HorizontalStackLayout>
 
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer  CommandParameter="Início"/>
+                        <TapGestureRecognizer Tapped="OnMenuItemTapped" CommandParameter="Carrinho"/>
                     </Grid.GestureRecognizers>
 
                     <VisualStateManager.VisualStateGroups>
@@ -125,7 +125,7 @@
                     </HorizontalStackLayout>
 
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer  CommandParameter="Início"/>
+                        <TapGestureRecognizer Tapped="OnMenuItemTapped" CommandParameter="Agendamento"/>
                     </Grid.GestureRecognizers>
 
                     <VisualStateManager.VisualStateGroups>
@@ -159,7 +159,7 @@
                     </HorizontalStackLayout>
 
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer  CommandParameter="Início"/>
+                        <TapGestureRecognizer Tapped="OnMenuItemTapped" CommandParameter="Histórico"/>
                     </Grid.GestureRecognizers>
 
                     <VisualStateManager.VisualStateGroups>
@@ -193,7 +193,7 @@
                     </HorizontalStackLayout>
 
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer  CommandParameter="Início"/>
+                        <TapGestureRecognizer Tapped="OnMenuItemTapped" CommandParameter="Notificações"/>
                     </Grid.GestureRecognizers>
 
                     <VisualStateManager.VisualStateGroups>
@@ -228,7 +228,7 @@
                     </HorizontalStackLayout>
                     
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer  CommandParameter="Início"/>
+                        <TapGestureRecognizer  Tapped="OnMenuItemTapped" CommandParameter="Suporte"/>
                     </Grid.GestureRecognizers>
                     
                     <VisualStateManager.VisualStateGroups>
@@ -257,6 +257,12 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
+
+                    <!--cONFIGURAÇÃO DAS Reformas e Manutenção-->
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+
                 </Grid.RowDefinitions>
 
                 <!-- Saudação + busca -->
@@ -312,7 +318,8 @@
                             BackgroundColor="Transparent"   VerticalOptions="Center"
                             PlaceholderColor="Gray"
                             FontSize="14"
-                            Margin="5,0,0,0"/>
+                            Margin="5,0,0,0"
+                            />
                         </Grid>
                     </Border>
 
@@ -345,19 +352,19 @@
 
                                 <CarouselView.ItemsSource>
                                     <x:Array Type="{x:Type x:String}">
-                                        <x:String>bannner1.png</x:String>
-                                        <x:String>banner2.png</x:String>
-                                        <x:String>banner3.png</x:String>
+                                        <x:String>bannner1.jpg</x:String>
+                                        <x:String>banner2.jpg</x:String>
+                                        <x:String>banner3.jpg</x:String>
                                     </x:Array>
                                 </CarouselView.ItemsSource>
 
                                 <CarouselView.ItemTemplate>
                                     <DataTemplate>
-                                        <Image Source="{Binding .}" Aspect="AspectFill"/>
+                                        <Image Source="{Binding .}" Aspect="AspectFit"/>
                                     </DataTemplate>
                                 </CarouselView.ItemTemplate>
                             </CarouselView>
-                            
+
                             <!--SETAS-->
 
                             <Grid>
@@ -368,8 +375,8 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                        
-                                    
+
+
                                     <!--SETA ESQUERDA-->
                                     <Grid Grid.Column="0"
                                           WidthRequest="50" HeightRequest="50"
@@ -380,13 +387,13 @@
                                         <Image Source="setaesquerda.png" WidthRequest="30" HeightRequest="30" VerticalOptions="Center" HorizontalOptions="Center" Opacity="0.7"/>
 
                                         <Grid.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="OnPrevBannerClicked"/>
+                                            <TapGestureRecognizer />
                                         </Grid.GestureRecognizers>
 
                                     </Grid>
 
                                     <!--SETA DIREITA-->
-                                    
+
                                     <Grid Grid.Column="2"
                                           WidthRequest="50" HeightRequest="50"
                                           VerticalOptions="Center"
@@ -396,7 +403,7 @@
                                         <Image Source="setadireita.png" WidthRequest="30" HeightRequest="30" VerticalOptions="Center" HorizontalOptions="Center" Opacity="0.7"/>
 
                                         <Grid.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="OnNextBannerClicked"/>
+                                            <TapGestureRecognizer />
                                         </Grid.GestureRecognizers>
                                     </Grid>
 
@@ -416,7 +423,8 @@
                     </Border>
                 </Grid>
 
-                <!--Titulu de ferramentas-->
+
+                <!--Construção Civil-->
 
                 <Grid Grid.Row="2" Margin="20,20,0,20">
                     <Label Text="Ferramentas"
@@ -424,12 +432,10 @@
                     FontAttributes="Bold" />
                 </Grid>
 
-                <Grid Grid.Row="3">
-                </Grid>
 
                 <!-- caixas de categoria-->
 
-                <CollectionView Grid.Row="3" HeightRequest="40" Margin="8,0,0,0">
+                <CollectionView Grid.Row="3" HeightRequest="40" Margin="8,0,0,30">
                     <!-- Esta parte faz com que os cards de categoria fiquem em linha reta-->
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Horizontal"
@@ -439,11 +445,13 @@
                     <!-- Esse faz com que apareça os dados ou nomes-->
                     <CollectionView.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
-                            <x:String>Categoria 1</x:String>
-                            <x:String>Categoria 2</x:String>
-                            <x:String>Categoria 3</x:String>
-                            <x:String>Categoria 4</x:String>
-                            <x:String>Categoria 5</x:String>
+                            <x:String>Construção Civil</x:String>
+                            <x:String>Reformas e Manutenção</x:String>
+                            <x:String>Jardinagem e Paisagismo</x:String>
+                            <x:String>Pintura e Acabamento</x:String>
+                            <x:String>Equipamentos Elétricos e Eletrônicos</x:String>
+                            <x:String>Limpeza e Conservação</x:String>
+                            <x:String>Transporte e Elevação</x:String>
                         </x:Array>
                     </CollectionView.ItemsSource>
 
@@ -451,7 +459,7 @@
                     <CollectionView.ItemTemplate>
                         <!--Data template é obrigatório para o molde visual das caixas-->
                         <DataTemplate>
-                            <Border WidthRequest="200"  BackgroundColor="{StaticResource CorQuartaria}" Padding="16,0">
+                            <Border WidthRequest="256"  BackgroundColor="{StaticResource CorQuartaria}" Padding="16,0">
 
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="20"/>
@@ -491,8 +499,9 @@
                                 <VerticalStackLayout Padding="10" Spacing="5">
 
                                     <Image Source="{Binding ImagemSource}" 
-                                    Aspect="AspectFill"
-                                    HeightRequest="150"/>
+                                    Aspect="AspectFit"
+                                    HeightRequest="150"
+                                     Background="Transparent"      />
                                     <Label Text="{Binding Titulo}" 
                                     FontAttributes="Bold"
                                     FontSize="16"
@@ -503,7 +512,7 @@
                                         FontSize="14" 
                                         TextColor="Green"/>
                                         <Label Text="•" VerticalOptions="Center" />
-                                        <Label Text="{Binding Disponibilidade}" 
+                                        <Label Text="{Binding Disponibilidade}"  
                                         FontSize="14" 
                                         TextColor="Gray"/>
                                     </HorizontalStackLayout>
@@ -514,6 +523,8 @@
                     </CollectionView.ItemTemplate>
 
                 </CollectionView>
+
+               
 
 
             </Grid>

@@ -1,12 +1,15 @@
-﻿//Usar o molde ferramenta
+﻿using System.Linq;
+using TelaPrincipalAtualizado.Views;
+using Microsoft.Maui.Controls;
 using TelaPrincipalAtualizado.Models;
-
 using System.Collections.ObjectModel;
+
 
 namespace TelaPrincipalAtualizado
 {
     public partial class MainPage : ContentPage
     {
+
         //Essa variável de estado é para rastrear se a sdidebar está aberta ou fechada
         private bool isSidebarOpen = true;
 
@@ -16,7 +19,6 @@ namespace TelaPrincipalAtualizado
         // Rastreia qual  item do menu foi clicado por ultimo
         private Grid _lastSelectedMenuItem;
 
-
         // Criar uma coleção observável de ferramentas. É uma lista que só aceita objetos do tipo Ferramenta
         public ObservableCollection<Ferramenta> Ferramentas { get; set; }
 
@@ -25,34 +27,56 @@ namespace TelaPrincipalAtualizado
         {
             InitializeComponent();
 
-            //Aqui cadiciona as ferramentas nos retangulos, quer dizer cria os retangulos
+
+
+            //Conecta os pontos de clique dos botões (IndicadorView) ao Banner (CarrouselView)
+            BannerCarousel.IndicatorView = BannerIndicator;
+
+
+            
 
             // Criar a lista de ferramentas
             Ferramentas = new ObservableCollection<Ferramenta>();
 
-            Ferramentas.Add(new Ferramenta
+            var f1 = new Ferramenta(1, "Furadeira Elétrica", "Ferramentas Elétricas")
             {
-                Titulo = "Furadeira Elétrica",
                 ImagemSource = "furadeira.png",
                 PrecoDia = "R$ 25,00/dia",
                 Disponibilidade = "Disponível"
-            });
+            };
+            Ferramentas.Add(f1);
 
-            Ferramentas.Add(new Ferramenta
+            var f2 = new Ferramenta(2, "Serra Circular Bosch", "Ferramentas Elétricas")
             {
-                Titulo = "Serra Circular Bosch",
                 ImagemSource = "serra.png",
                 PrecoDia = "R$ 60,00/dia",
                 Disponibilidade = "1 disponível"
-            });
+            };
+            Ferramentas.Add(f2);
+
+            var f3 = new Ferramenta(3, "Lixadeira Orbital", "Ferramentas Elétricas")
+            {
+                ImagemSource = "lixadeira.png",
+                PrecoDia = "R$ 40,00/dia",
+                Disponibilidade = "Disponível"
+            };
+            Ferramentas.Add(f3);
+
+            var f4 = new Ferramenta(4, "Parafusadeira", "Ferramentas Elétricas")
+            {
+                ImagemSource = "parafusadeira.png",
+                PrecoDia = "R$ 30,00/dia",
+                Disponibilidade = "2 disponíveis"
+            };
+            Ferramentas.Add(f4); 
 
             //Abaixo aicionari ais ferramentas
 
             // Conecta a lista C# com o xaml, que é o famoso binding
             BindingContext = this;
 
-            //Conecta os pontos de clique dos botões (IndicadorView) ao Banner (CarrouselView)
-            BannerCarousel.IndicatorView = BannerIndicator;
+
+
         }
 
         // LÓGICA DE ABRIR E FECHAR A SIDEBAR
@@ -96,47 +120,10 @@ namespace TelaPrincipalAtualizado
             }
         }
 
-        // LÓGICA DA nAVEGAÇÃO DO BANNER
-        private void OnPrevBannerClicked(object sender, EventArgs e)
-        {
-            // Obtem o indice atual do banner, resumindo pega o banner atual
-            int currentIndex = BannerCarousel.Position;
-
-            //Calcula o indice do banner anterior. Se estiver no primeiro banner, volta para o ultimo
-            int previousIndex = (currentIndex == 0)
-                ? BannerCarousel.ItemsSource.Cast<object>().Count() - 1
-                : currentIndex - 1;
-
-            //Definme a nova posição do Banner
-            BannerCarousel.Position = previousIndex;
-        }
-
-        private void OnNextBannerClicked(object sender, EventArgs e)
-        {
-            //Obtem o número total de itens no Banner
-            int totalItems = BannerCarousel.ItemsSource.Cast<object>().Count();
-
-            //Obtem o indice atual do banner
-            int currentIndex = BannerCarousel.Position;
-
-            //calcula o proximo indice. se estiver no ultimo banner, volta para o primeiro
-            int nextIndex = (currentIndex == totalItems - 1)
-                ? 0
-                : currentIndex + 1;
-
-            //Define a nova posição do Banner
-            BannerCarousel.Position = nextIndex;
-        }
-
-
-
-
-
-
-
+        //===========================================
         // Lógica do clique dos items da sidebar
-
-        private void OnMenuItemTapped(object sender, EventArgs e) 
+        //===========================================
+        private async void OnMenuItemTapped(object sender, EventArgs e) 
         {
             // Identifica qual grid foi clicado
             var clickedGrid = sender as Grid;
@@ -147,6 +134,8 @@ namespace TelaPrincipalAtualizado
                 //pega o valor do: inicio e assim por diante
                 string menuItem = tapGesture.CommandParameter.ToString();
                 System.Diagnostics.Debug.WriteLine($"Menu clicado{menuItem}");
+
+                Page nextPage = null;
 
                 // Aqui vai fica a lógica para muda o estado visual do botão
                 if (_lastSelectedMenuItem != null) 
@@ -169,35 +158,54 @@ namespace TelaPrincipalAtualizado
                 {
                     case "Inicio":
                         // Navegar para a página inicial
-                        System.Diagnostics.Debug.WriteLine("Navegando para o Início");
+                        nextPage = new MainPage();
                         break;
                     case "Carrinho":
-                        // Navegar para a página de categorias
+                        // Navegar para a página de carrinho
                         System.Diagnostics.Debug.WriteLine("Navegando para o Carrinho");
                         break;
                     case "Agendamento":
-                        // Navegar para a página de agenda
-                        System.Diagnostics.Debug.WriteLine("Navegando para a Agendamento");
+                        // Navegar para a página de agendamento
+                        System.Diagnostics.Debug.WriteLine("Navegando para o Agendamento");
                         break;
                     case "Histórico":
                         // Navegar para a página de histórico
                         System.Diagnostics.Debug.WriteLine("Navegando para o Histórico");
                         break;
                     case "Notificações":
-                        // Navegar para a página de perfil
-                        System.Diagnostics.Debug.WriteLine("Navegando para as Notificações");
+                        // Navegar para a página de notificações
+                        nextPage = new NotificacaoPage();
                         break;
                     case "Suporte":
-                        // Navegar para a página de configurações
+                        // Navegar para a página de suporte
                         System.Diagnostics.Debug.WriteLine("Navegando para o Suporte");
                         break;
 
                 }
+
+                // 3. Executa a navegação e fecha a SideBar
+                if (nextPage != null)
+                {
+                    // Navega para a nova página
+                    await Navigation.PushAsync(nextPage);
+
+                    // Fecha a SideBar após a navegação (reutiliza a lógica OnMenuTapped)
+                    // Checa se está aberta antes de tentar fechar.
+                    if (isSidebarOpen)
+                    {
+                        OnMenuTapped(null, EventArgs.Empty);
+                    }
+                }
+                else if (menuItem == "Início")
+                {
+                    // Garante que a SideBar feche mesmo se não houver navegação (ex: clicou em 'Início' na Home Page)
+                    if (isSidebarOpen)
+                    {
+                        OnMenuTapped(null, EventArgs.Empty);
+                    }
+                }
             }
         }
-
-
-
 
     }
 }

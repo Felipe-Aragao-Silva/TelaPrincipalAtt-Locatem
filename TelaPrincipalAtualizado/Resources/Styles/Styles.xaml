@@ -4,15 +4,105 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
-    <!-- Cores -->
-    <Color x:Key="CorPrimaria">#FFCB04</Color>
-    <Color x:Key="CorSecundaria">#FFCE4F</Color>
-    <Color x:Key="CorTerciaria">#272627</Color>
+    <!-- Cores Felipe -->
+    <Color x:Key="CorPrimaria">#FFCB03</Color>
+    <Color x:Key="CorSecundaria">#F5E3B3</Color>
+    <Color x:Key="CorTerciaria">#6E5000</Color>
     <Color x:Key="CorQuartaria">#D9D9D9</Color>
     <Color x:Key="CorBranco">#FFFFFF</Color>
     <Color x:Key="CorPreto">#000000</Color>
-    <Color x:Key="CorQuitaria">#F2AF0D</Color>
+    <Color x:Key="CorPadrao">#F2AF0D</Color>
     <Color x:Key="CorErro">#FF0000</Color>
+    <Color x:Key="Detalhe">#212121</Color>
+    
+    <!--Cores Bianca-->
+    
+   
+
+    
+    
+    <!--Estilos Bianca-->
+    <Style TargetType="CheckBox" x:Key="CheckBox">
+        <Setter Property="Color" Value="{StaticResource CorQuartaria}" />
+    </Style>
+
+    <Style TargetType="Span" x:Key="EstiloLink">
+        <Setter Property="TextDecorations" Value="Underline"/>
+        <Setter Property="TextColor" Value="#0000FF"/>
+    </Style>
+
+    <Style TargetType="ContentPage" x:Key="ContentFundo">
+        <Setter Property="BackgroundColor" Value="{StaticResource CorBranco}"/>
+    </Style>
+
+    <Style TargetType="HorizontalStackLayout" x:Key="EstiloHorizontalStack">
+        <Setter Property="Spacing" Value="24"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="HorizontalOptions" Value="End"/>
+    </Style>
+
+    <Style TargetType="Grid" x:Key="EstiloGridBase">
+        <Setter Property="ColumnSpacing" Value="0"/>
+        <Setter Property="RowSpacing" Value="0"/>
+    </Style>
+
+    <Style TargetType="Border" x:Key="EstiloBordaEntry">
+        <Setter Property="Stroke" Value="{StaticResource CorPreto}"/>
+        <Setter Property="StrokeThickness" Value="1"/>
+        <Setter Property="StrokeShape" Value="RoundRectangle 5"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource CorBranco}"/>
+    </Style>
+
+    <Style TargetType="Entry" x:Key="EstiloEntry">
+        <Setter Property="TextColor" Value="{StaticResource CorPreto}"/>
+        <Setter Property="PlaceholderColor" Value="{StaticResource CorPreto}"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource CorBranco}"/>
+    </Style>
+
+    <Style TargetType="Button" x:Key="EstiloBotaoBase">
+        <Setter Property="HeightRequest" Value="45"/>
+        <Setter Property="HorizontalOptions" Value="Fill"/>
+        <Setter Property="VerticalOptions" Value="Fill"/>
+        <Setter Property="CornerRadius" Value="15"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+    </Style>
+
+    <Style TargetType="Button" x:Key="EstiloBotaoPrimario" BasedOn="{StaticResource EstiloBotaoBase}">
+        <Setter Property="BackgroundColor" Value="{StaticResource CorPrimaria}"/>
+        <Setter Property="TextColor" Value="{StaticResource CorPreto}"/>
+        <Setter Property="Margin" Value="0,30,0,0"/>
+    </Style>
+
+    <Style TargetType="Button" x:Key="EstiloBotaoSecundario" BasedOn="{StaticResource EstiloBotaoBase}">
+        <Setter Property="BackgroundColor" Value="{StaticResource CorSecundaria}"/>
+        <Setter Property="TextColor" Value="{StaticResource CorTerciaria}"/>
+    </Style>
+
+    <Style TargetType="Label" x:Key="LabelSaudacaoGrande">
+        <Setter Property="FontSize" Value="23"/>
+        <Setter Property="TextColor" Value="{StaticResource CorPreto}"/>
+    </Style>
+
+    <Style TargetType="Label" x:Key="LabelPequeno">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="TextColor" Value="{StaticResource CorPreto}"/>
+    </Style>
+
+    <Style TargetType="Label" x:Key="LabelTermos">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="TextColor" Value="{StaticResource CorPreto}"/>
+        <Setter Property="LineBreakMode" Value="WordWrap"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+    <Style TargetType="Label" x:Key="LabelRodape" BasedOn="{StaticResource LabelPequeno}">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="TextColor" Value="{StaticResource CorPrimaria}"/>
+    </Style>
 
     <!-- Estilos -->
     <Style x:Key="TituloLabel" TargetType="Label">
@@ -35,22 +125,6 @@
     
     <!--Style dos botões para o carrossel-->
 
-    <Style x:Key="CarrosselLeftButton" TargetType="Button">
-        <Setter Property="BackgroundColor" Value="Transparent"/>
-        <Setter Property="WidthRequest" Value="44"/>
-        <Setter Property="HeightRequest" Value="44"/>
-        <Setter Property="VerticalOptions" Value="Center"/>
-        <Setter Property="HorizontalOptions" Value="Start"/>
-        <Setter Property="Margin" Value="8,0,0,0"/>
-    </Style>
-
-    <Style x:Key="CarrosselRightButton" TargetType="Button">
-        <Setter Property="BackgroundColor" Value="Transparent"/>
-        <Setter Property="WidthRequest" Value="44"/>
-        <Setter Property="HeightRequest" Value="44"/>
-        <Setter Property="VerticalOptions" Value="Center"/>
-        <Setter Property="HorizontalOptions" Value="End"/>
-        <Setter Property="Margin" Value="0,0,8,0"/>
-    </Style>
+   
 
 </ResourceDictionary>
