@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\felip\\OneDrive\\Documents\\Locatem\\TelaPrincipalAtualizado\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{423CF04A-44C6-4E6E-95D1-273FDB7E4770}|TelaPrincipalAtualizado\\TelaPrincipalAtualizado.csproj|c:\\users\\felip\\onedrive\\documents\\locatem\\telaprincipalatualizado\\telaprincipalatualizado\\views\\notificacaopage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{423CF04A-44C6-4E6E-95D1-273FDB7E4770}|TelaPrincipalAtualizado\\TelaPrincipalAtualizado.csproj|solutionrelative:telaprincipalatualizado\\views\\notificacaopage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{423CF04A-44C6-4E6E-95D1-273FDB7E4770}|TelaPrincipalAtualizado\\TelaPrincipalAtualizado.csproj|c:\\users\\felip\\onedrive\\documents\\locatem\\telaprincipalatualizado\\telaprincipalatualizado\\views\\notificacaopage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{423CF04A-44C6-4E6E-95D1-273FDB7E4770}|TelaPrincipalAtualizado\\TelaPrincipalAtualizado.csproj|solutionrelative:telaprincipalatualizado\\views\\notificacaopage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{423CF04A-44C6-4E6E-95D1-273FDB7E4770}|TelaPrincipalAtualizado\\TelaPrincipalAtualizado.csproj|c:\\users\\felip\\onedrive\\documents\\locatem\\telaprincipalatualizado\\telaprincipalatualizado\\views\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{423CF04A-44C6-4E6E-95D1-273FDB7E4770}|TelaPrincipalAtualizado\\TelaPrincipalAtualizado.csproj|solutionrelative:telaprincipalatualizado\\views\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{423CF04A-44C6-4E6E-95D1-273FDB7E4770}|TelaPrincipalAtualizado\\TelaPrincipalAtualizado.csproj|c:\\users\\felip\\onedrive\\documents\\locatem\\telaprincipalatualizado\\telaprincipalatualizado\\viewmodels\\sidebarviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{423CF04A-44C6-4E6E-95D1-273FDB7E4770}|TelaPrincipalAtualizado\\TelaPrincipalAtualizado.csproj|solutionrelative:telaprincipalatualizado\\viewmodels\\sidebarviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{423CF04A-44C6-4E6E-95D1-273FDB7E4770}|TelaPrincipalAtualizado\\TelaPrincipalAtualizado.csproj|c:\\users\\felip\\onedrive\\documents\\locatem\\telaprincipalatualizado\\telaprincipalatualizado\\views\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -51,27 +63,73 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "NotificacaoPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Locatem\\TelaPrincipalAtualizado\\TelaPrincipalAtualizado\\Views\\NotificacaoPage.xaml.cs",
+              "RelativeDocumentMoniker": "TelaPrincipalAtualizado\\Views\\NotificacaoPage.xaml.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Locatem\\TelaPrincipalAtualizado\\TelaPrincipalAtualizado\\Views\\NotificacaoPage.xaml.cs",
+              "RelativeToolTip": "TelaPrincipalAtualizado\\Views\\NotificacaoPage.xaml.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAowBIAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T00:47:19.376Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "NotificacaoPage.xaml",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Locatem\\TelaPrincipalAtualizado\\TelaPrincipalAtualizado\\Views\\NotificacaoPage.xaml",
+              "RelativeDocumentMoniker": "TelaPrincipalAtualizado\\Views\\NotificacaoPage.xaml",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Locatem\\TelaPrincipalAtualizado\\TelaPrincipalAtualizado\\Views\\NotificacaoPage.xaml",
+              "RelativeToolTip": "TelaPrincipalAtualizado\\Views\\NotificacaoPage.xaml",
+              "ViewState": "AgIAAMwAAAAAAAAAAAAAAPkAAABRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-11T00:40:35.654Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SidebarViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Locatem\\TelaPrincipalAtualizado\\TelaPrincipalAtualizado\\ViewModels\\SidebarViewModel.cs",
+              "RelativeDocumentMoniker": "TelaPrincipalAtualizado\\ViewModels\\SidebarViewModel.cs",
+              "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Locatem\\TelaPrincipalAtualizado\\TelaPrincipalAtualizado\\ViewModels\\SidebarViewModel.cs",
+              "RelativeToolTip": "TelaPrincipalAtualizado\\ViewModels\\SidebarViewModel.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwDgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T23:37:58.947Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "MainPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Locatem\\TelaPrincipalAtualizado\\TelaPrincipalAtualizado\\Views\\MainPage.xaml.cs",
               "RelativeDocumentMoniker": "TelaPrincipalAtualizado\\Views\\MainPage.xaml.cs",
               "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Locatem\\TelaPrincipalAtualizado\\TelaPrincipalAtualizado\\Views\\MainPage.xaml.cs",
               "RelativeToolTip": "TelaPrincipalAtualizado\\Views\\MainPage.xaml.cs",
-              "ViewState": "AgIAALEAAAAAAAAAAAAAALgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-08T19:58:11.63Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "MainPage.xaml",
               "DocumentMoniker": "C:\\Users\\felip\\OneDrive\\Documents\\Locatem\\TelaPrincipalAtualizado\\TelaPrincipalAtualizado\\Views\\MainPage.xaml",
               "RelativeDocumentMoniker": "TelaPrincipalAtualizado\\Views\\MainPage.xaml",
               "ToolTip": "C:\\Users\\felip\\OneDrive\\Documents\\Locatem\\TelaPrincipalAtualizado\\TelaPrincipalAtualizado\\Views\\MainPage.xaml",
               "RelativeToolTip": "TelaPrincipalAtualizado\\Views\\MainPage.xaml",
-              "ViewState": "AgIAACYBAAAAAAAAAAAAADQBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAPkAAAAAAAAAAAAAABYBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-08T19:57:49.265Z"
+              "WhenOpened": "2025-11-08T19:57:49.265Z",
+              "EditorCaption": ""
             }
           ]
         }

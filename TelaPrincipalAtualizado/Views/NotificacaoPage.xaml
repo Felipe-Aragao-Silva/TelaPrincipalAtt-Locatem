@@ -4,33 +4,246 @@
              x:Class="TelaPrincipalAtualizado.Views.NotificacaoPage"
              Title="">
 
-    <Grid x:Name="MainGrid" ColumnDefinitions="300, *" RowDefinitions="*">
-        <!-- Painel Esquerdo -->
-        <StackLayout x:Name="PainelLateral" 
-         Grid.Column="0"
-         BackgroundColor="{StaticResource PainelLateral}" 
-         Padding="20" Spacing="20">
+    <Grid x:Name="mainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-            <HorizontalStackLayout Spacing="10" VerticalOptions="Center" Margin="30,0,0,0">
-                <Image Source="locatem.png" HeightRequest="60" WidthRequest="60" Aspect="AspectFit"/>
-                <Label Text="Locatem" FontSize="22" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center"/>
+        <!-- SIDEBAR -->
+        <StackLayout Grid.Column="0" BackgroundColor="{StaticResource CorQuartaria}" x:Name="sideBarLayout">
+
+            <HorizontalStackLayout Margin="15,30,0,20">
+                <Image Source="logo.png" WidthRequest="24" HeightRequest="24"/>
+                <Label Text="LOCATEM" FontAttributes="Bold"
+                     VerticalOptions="Center" Margin="8,0,0,0"/>
             </HorizontalStackLayout>
 
-            <Frame CornerRadius="40" HeightRequest="80" WidthRequest="80" Padding="0" HasShadow="False" BackgroundColor="{StaticResource PainelLateralEscuro}" HorizontalOptions="Center">
-                <Image Source="https://cdn-icons-png.flaticon.com/512/149/149071.png" Aspect="AspectFill"/>
-            </Frame>
-            <Label Text="Olá, Usuário" FontSize="16" TextColor="Black" HorizontalOptions="Center"/>
 
-            <!-- Navegação -->
-            <VerticalStackLayout Spacing="10" Margin="0,20,0,0">
-                <Button Text="Início" Style="{StaticResource BotaoLateral}" />
-                <Button Text="Carrinho" Style="{StaticResource BotaoLateral}" />
-                <Button Text="Agenda" Style="{StaticResource BotaoLateral}" />
-                <Button Text="Histórico" Style="{StaticResource BotaoLateral}" />
-                <Button Text="Notificações" Style="{StaticResource BotaoLateralAtivo}" />
-                <Button Text="Suporte" Style="{StaticResource BotaoLateral}" />
+            <HorizontalStackLayout Margin="0,10" HorizontalOptions="Start" Padding="15">
+                <Image Source="usuario.png"
+                     WidthRequest="80" HeightRequest="80"
+                     HorizontalOptions="Start"
+                     Margin="10,0,0,0"/>
+                <Label Text="USUÁRIO"
+                     FontSize="20" HorizontalOptions="End"
+                     VerticalOptions="Center"
+                     Margin="20,0,0,0"
+                     FontAttributes="Bold"/>
+            </HorizontalStackLayout>
+
+            <!--Linha-->
+            <BoxView HeightRequest="1" WidthRequest="250" Color="{StaticResource CorPreto}" Margin="10,20"/>
+
+
+            <VerticalStackLayout Spacing="15" Margin="20,30">
+
+                <!--Inicio-->
+
+                <Grid HeightRequest="40">
+                    <HorizontalStackLayout VerticalOptions="Center" Spacing="10" Padding="10,0">
+                        <!--IMAGEM INICIO-->
+                        <Image Source="inicio.png"
+                             WidthRequest="20"
+                             HeightRequest="20"
+                             VerticalOptions="Center"
+                             BackgroundColor="Transparent"/>
+
+                        <Label Text="Início"
+                             FontSize="16"
+                             VerticalOptions="Center"
+                             TextColor="Black"/>
+
+                    </HorizontalStackLayout>
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ComandoNavegar}" CommandParameter="Início"/>
+                    </Grid.GestureRecognizers>
+
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="EstadoComun">
+                            <VisualState x:Name="Normal"/>
+                            <VisualState x:Name="Seelecionado">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource CorQuartaria}"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </Grid>
+
+                <!--CARRINHO-->
+
+                <Grid HeightRequest="40">
+                    <HorizontalStackLayout VerticalOptions="Center" Spacing="10" Padding="10,0">
+                        <!--IMAGEM CARRINHO-->
+                        <Image Source="carrinho.png"
+                      WidthRequest="20"
+                      HeightRequest="20"
+                      VerticalOptions="Center"
+                      BackgroundColor="Transparent"/>
+
+                        <Label Text="Carrinho"
+                      FontSize="16"
+                      VerticalOptions="Center"
+                      TextColor="Black"/>
+
+                    </HorizontalStackLayout>
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ComandoNavegar}" CommandParameter="Carrinho"/>
+                    </Grid.GestureRecognizers>
+
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="EstadoComun">
+                            <VisualState x:Name="Normal"/>
+                            <VisualState x:Name="Seelecionado">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource CorQuartaria}"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </Grid>
+
+                <!--AGENDA-->
+
+                <Grid HeightRequest="40">
+                    <HorizontalStackLayout VerticalOptions="Center" Spacing="10" Padding="10,0">
+                        <!--IMAGEM AGENDA-->
+                        <Image Source="agenda.png"
+                      WidthRequest="20"
+                      HeightRequest="20"
+                      VerticalOptions="Center"
+                      BackgroundColor="Transparent"/>
+
+                        <Label Text="Agendamento"
+                      FontSize="16"
+                      VerticalOptions="Center"
+                      TextColor="Black"/>
+
+                    </HorizontalStackLayout>
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ComandoNavegar}" CommandParameter="Agendamento"/>
+                    </Grid.GestureRecognizers>
+
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="EstadoComun">
+                            <VisualState x:Name="Normal"/>
+                            <VisualState x:Name="Seelecionado">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource CorQuartaria}"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </Grid>
+
+                <!--Histórico-->
+
+                <Grid HeightRequest="40">
+                    <HorizontalStackLayout VerticalOptions="Center" Spacing="10" Padding="10,0">
+                        <!--IMAGEM HISTÓRICO-->
+                        <Image Source="historico.png"
+                      WidthRequest="20"
+                      HeightRequest="20"
+                      VerticalOptions="Center"
+                      BackgroundColor="Transparent"/>
+
+                        <Label Text="Histórico"
+                      FontSize="16"
+                      VerticalOptions="Center"
+                      TextColor="Black"/>
+
+                    </HorizontalStackLayout>
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ComandoNavegar}" CommandParameter="Histórico"/>
+                    </Grid.GestureRecognizers>
+
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="EstadoComun">
+                            <VisualState x:Name="Normal"/>
+                            <VisualState x:Name="Seelecionado">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource CorQuartaria}"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </Grid>
+
+                <!--NOTIFICAÇÕES-->
+
+                <Grid HeightRequest="40">
+                    <HorizontalStackLayout VerticalOptions="Center" Spacing="10" Padding="10,0">
+                        <!--IMAGEM NOTIFICAÇÕES-->
+                        <Image Source="notificacoes.png"
+                      WidthRequest="20"
+                      HeightRequest="20"
+                      VerticalOptions="Center"
+                      BackgroundColor="Transparent"/>
+
+                        <Label Text="Notificações"
+                      FontSize="16"
+                      VerticalOptions="Center"
+                      TextColor="Black"/>
+
+                    </HorizontalStackLayout>
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ComandoNavegar}" CommandParameter="Notificações"/>
+                    </Grid.GestureRecognizers>
+
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="EstadoComun">
+                            <VisualState x:Name="Normal"/>
+                            <VisualState x:Name="Seelecionado">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource CorQuartaria}"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+
+                </Grid>
+
+                <!--SUPORTE-->
+
+                <Grid HeightRequest="40">
+                    <HorizontalStackLayout VerticalOptions="Center" Spacing="10" Padding="10,0">
+                        <!--IMAGEM SUPORTE-->
+                        <Image Source="suporte.png"
+                      WidthRequest="20"
+                      HeightRequest="20"
+                      VerticalOptions="Center"
+                      BackgroundColor="Transparent"/>
+
+                        <Label Text="Suporte"
+                      FontSize="16"
+                      VerticalOptions="Center"
+                      TextColor="Black"/>
+
+                    </HorizontalStackLayout>
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer  Command="{Binding ComandoNavegar}" CommandParameter="Suporte"/>
+                    </Grid.GestureRecognizers>
+
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="EstadoComun">
+                            <VisualState x:Name="Normal"/>
+                            <VisualState x:Name="Seelecionado">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource CorQuartaria}"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </Grid>
+
             </VerticalStackLayout>
-
         </StackLayout>
 
         <!-- Conteúdo Direito -->
@@ -39,15 +252,14 @@
             <Grid ColumnDefinitions="Auto, *, Auto" VerticalOptions="Start">
 
                 <!-- Botão Menu -->
-                <ImageButton 
-                Source="iconemenu.png" 
-                HeightRequest="30" 
-                WidthRequest="30" 
-                Margin="10,0,0,0"
-                BackgroundColor="Transparent"
-                VerticalOptions="Center"
-                HorizontalOptions="Start"
-                Clicked="OnMenuClicked" />
+                <Image Source="menu.png" Grid.Column="0"
+                            WidthRequest="25" HeightRequest="25"
+                               HorizontalOptions="Start" 
+                               VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="AoTocarMenu" />
+                    </Image.GestureRecognizers>
+                </Image>
 
                 <Label Grid.Column="1" Text="Notificações" FontSize="26" FontAttributes="Bold" TextColor="{StaticResource CorPadrao}" VerticalOptions="Center" Margin="10,0,0,0"/>
 

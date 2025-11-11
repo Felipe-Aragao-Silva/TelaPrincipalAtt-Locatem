@@ -1,7 +1,48 @@
+# Build results
+bin/
+obj/
+Debug/
+Release/
+x64/
+x86/
+*.exe
+*.dll
+*.pdb
+*.cache
+*.log
+*.vspscc
+*.vssscc
+
+# Visual Studio
 .vs/
-
-[Bb]in/
-[Oo]bj/
-
-*.suo
 *.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# IDE configs
+.vscode/
+.idea/
+
+# Backup & temp files
+*.bak
+*.tmp
+*.swp
+*.dbmdl
+*.jfm
+*.backup
+*.ncb
+
+# NuGet
+*.nupkg
+packages/
+*.nuget.props
+*.nuget.targets
+
+# Others
+*.snupkg
+*.TestResult.xml
+TestResult.xml
+*.coverage
+*.cov
+*.tlog

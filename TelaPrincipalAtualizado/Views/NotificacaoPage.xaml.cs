@@ -1,14 +1,20 @@
-using Microsoft.Maui.Controls;
+ï»¿using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Shapes;
 using TelaPrincipalAtualizado.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TelaPrincipalAtualizado.Views;
+using System.Threading.Tasks;
 
 namespace TelaPrincipalAtualizado.Views;
 
 public partial class NotificacaoPage : ContentPage
 {
+    private bool isSidebarOpen = true;
+    private const double SidebarWidth = 300;
+
+
     private List<Notificacao> todasNotificacoes;
     private string filtroAtual = "TODAS";
 
@@ -19,11 +25,73 @@ public partial class NotificacaoPage : ContentPage
         MostrarNotificacoes(todasNotificacoes);
     }
 
-    private void OnMenuClicked(object sender, EventArgs e)
+    private async void AoTocarMenu(object sender, EventArgs e)
     {
-        PainelLateral.IsVisible = !PainelLateral.IsVisible;
-        MainGrid.ColumnDefinitions[0].Width = PainelLateral.IsVisible ? new GridLength(300) : 0;
+        var sidebarColumn = mainGrid.ColumnDefinitions[0];
+
+        if (isSidebarOpen)
+        {
+            // Esconder
+            await sideBarLayout.TranslateTo(-SidebarWidth, 0, 250, Easing.CubicIn);
+            sidebarColumn.Width = new GridLength(0);
+            isSidebarOpen = false;
+        }
+        else
+        {
+            // Mostrar
+            sidebarColumn.Width = new GridLength(SidebarWidth);
+            await sideBarLayout.TranslateTo(0, 0, 250, Easing.CubicOut);
+            isSidebarOpen = true;
+        }
     }
+
+    private async Task LidarComSolicitacaoDeNavegacao(string nomeDoItem)
+    {
+        Page proximaPagina = null;
+
+ 
+        switch (nomeDoItem)
+        {
+            case "Inicio":
+                if (Navigation.NavigationStack.Count > 1)
+                {
+                    await Navigation.PopAsync();
+                }
+                break;
+            case "Carrinho":
+                // proximaPagina = new CarrinhoPage();
+                await DisplayAlert("NavegaÃ§Ã£o", "Navegando para: Carrinho", "OK");
+                break;
+            case "Agendamento":
+                // proximaPagina = new AgendaPage();
+                await DisplayAlert("NavegaÃ§Ã£o", "Navegando para: Agendamento", "OK");
+                break;
+            case "HistÃ³rico":
+                // proximaPagina = new HistoricoPage();
+                await DisplayAlert("NavegaÃ§Ã£o", "Navegando para: HistÃ³rico", "OK");
+                break;
+            case "NotificaÃ§Ãµes":
+                // JÃ¡ estamos aqui, nÃ£o faz nada
+                break;
+            case "Suporte":
+                // proximaPagina = new SuportePage();
+                await DisplayAlert("NavegaÃ§Ã£o", "Navegando para: Suporte", "OK");
+                break;
+        }
+
+        // Executa o Push (Se for uma nova pÃ¡gina)
+        if (proximaPagina != null)
+        {
+            await Navigation.PushAsync(proximaPagina);
+        }
+
+        // Fecha a SideBar
+        if (isSidebarOpen)
+        {
+            AoTocarMenu(this, EventArgs.Empty);
+        }
+    }
+
 
     private void CarregarNotificacoes()
     {
@@ -31,19 +99,19 @@ public partial class NotificacaoPage : ContentPage
             {
                 // Hoje
                 new("Furadeira Bosch", "Reserva confirmada", DateTime.Now),
-                new("Betoneira 400L", "Devolução em atraso", DateTime.Now.AddHours(-2)),
+                new("Betoneira 400L", "DevoluÃ§Ã£o em atraso", DateTime.Now.AddHours(-2)),
 
-                // Últimos 7 dias
-                new("Gerador 5kVA", "Devolução agendada", DateTime.Now.AddDays(-1)),
-                new("Compressor de Ar 24L", "Aguardando manutenção", DateTime.Now.AddDays(-3)),
-                new("Martelete 10kg", "Renovação efetuada", DateTime.Now.AddDays(-5)),
+                // Ãšltimos 7 dias
+                new("Gerador 5kVA", "DevoluÃ§Ã£o agendada", DateTime.Now.AddDays(-1)),
+                new("Compressor de Ar 24L", "Aguardando manutenÃ§Ã£o", DateTime.Now.AddDays(-3)),
+                new("Martelete 10kg", "RenovaÃ§Ã£o efetuada", DateTime.Now.AddDays(-5)),
 
                 // Complemento do filtro "Todas"
-                new("Serra Circular Makita", "Aguardando devolução", DateTime.Now.AddDays(-6)),
-                new("Escada Extensível 10m", "Uso prolongado", DateTime.Now.AddDays(-4)),
-                new("Torre de Iluminação", "Locação finalizada", DateTime.Now.AddDays(-10)),
-                new("Parafusadeira Elétrica", "Pagamento confirmado", DateTime.Now.AddDays(-15)),
-                new("Andaime Suspenso", "Limpeza necessária", DateTime.Now.AddDays(-20))
+                new("Serra Circular Makita", "Aguardando devoluÃ§Ã£o", DateTime.Now.AddDays(-6)),
+                new("Escada ExtensÃ­vel 10m", "Uso prolongado", DateTime.Now.AddDays(-4)),
+                new("Torre de IluminaÃ§Ã£o", "LocaÃ§Ã£o finalizada", DateTime.Now.AddDays(-10)),
+                new("Parafusadeira ElÃ©trica", "Pagamento confirmado", DateTime.Now.AddDays(-15)),
+                new("Andaime Suspenso", "Limpeza necessÃ¡ria", DateTime.Now.AddDays(-20))
             };
     }
 
@@ -114,64 +182,64 @@ public partial class NotificacaoPage : ContentPage
                 dias = 2;
                 break;
             case "Betoneira 400L":
-                novoStatus = "Devolução em atraso";
+                novoStatus = "DevoluÃ§Ã£o em atraso";
                 formaPagamento = "Dinheiro";
-                entrega = "Aguardando devolução";
+                entrega = "Aguardando devoluÃ§Ã£o";
                 valor = 180;
                 dias = 4;
                 break;
             case "Gerador 5kVA":
-                novoStatus = "Devolução agendada";
-                formaPagamento = "Cartão de crédito";
-                entrega = "Devolução agendada para amanhã";
+                novoStatus = "DevoluÃ§Ã£o agendada";
+                formaPagamento = "CartÃ£o de crÃ©dito";
+                entrega = "DevoluÃ§Ã£o agendada para amanhÃ£";
                 valor = 250;
                 dias = 5;
                 break;
             case "Compressor de Ar 24L":
-                novoStatus = "Aguardando manutenção";
-                formaPagamento = "Boleto bancário";
-                entrega = "Manutenção";
+                novoStatus = "Aguardando manutenÃ§Ã£o";
+                formaPagamento = "Boleto bancÃ¡rio";
+                entrega = "ManutenÃ§Ã£o";
                 valor = 200;
                 dias = 3;
                 break;
             case "Martelete 10kg":
-                novoStatus = "Renovação efetuada";
-                formaPagamento = "Depósito";
+                novoStatus = "RenovaÃ§Ã£o efetuada";
+                formaPagamento = "DepÃ³sito";
                 entrega = "Data atualizada";
                 valor = 300;
                 dias = 2;
                 break;
             case "Serra Circular Makita":
-                novoStatus = "Aguardando devolução";
+                novoStatus = "Aguardando devoluÃ§Ã£o";
                 formaPagamento = "Pix";
-                entrega = "Devolução agendada para: HOJE";
+                entrega = "DevoluÃ§Ã£o agendada para: HOJE";
                 valor = 110;
                 dias = 2;
                 break;
-            case "Escada Extensível 10m":
+            case "Escada ExtensÃ­vel 10m":
                 novoStatus = "Uso prolongado";
-                formaPagamento = "Transferência bancária";
-                entrega = "Uso prolongado, verifique necessidade de renovação";
+                formaPagamento = "TransferÃªncia bancÃ¡ria";
+                entrega = "Uso prolongado, verifique necessidade de renovaÃ§Ã£o";
                 valor = 80;
                 dias = 7;
                 break;
-            case "Torre de Iluminação":
-                novoStatus = "Locação finalizada";
-                formaPagamento = "Transferência bancária";
-                entrega = "Locação finalizada";
+            case "Torre de IluminaÃ§Ã£o":
+                novoStatus = "LocaÃ§Ã£o finalizada";
+                formaPagamento = "TransferÃªncia bancÃ¡ria";
+                entrega = "LocaÃ§Ã£o finalizada";
                 valor = 320;
                 dias = 7;
                 break;
-            case "Parafusadeira Elétrica":
+            case "Parafusadeira ElÃ©trica":
                 novoStatus = "Pagamento confirmado";
-                formaPagamento = "Cartão de crédito";
+                formaPagamento = "CartÃ£o de crÃ©dito";
                 entrega = "Pagamento confirmado";
                 valor = 60;
                 dias = 1;
                 break;
             case "Andaime Suspenso":
-                novoStatus = "Limpeza necessária";
-                formaPagamento = "Depósito";
+                novoStatus = "Limpeza necessÃ¡ria";
+                formaPagamento = "DepÃ³sito";
                 entrega = "Limpeza do item";
                 valor = 400;
                 dias = 10;
@@ -198,11 +266,11 @@ public partial class NotificacaoPage : ContentPage
         }
 
         // Mostra popup de detalhes
-        await DisplayAlert("Detalhes da Locação",
+        await DisplayAlert("Detalhes da LocaÃ§Ã£o",
             $"Ferramenta: {n.Ferramenta}\n" +
             $"Status: {novoStatus}\n" +
             $"Data: {n.Data:dd/MM/yyyy HH:mm}\n" +
-            $"Dias de locação: {dias}\n" +
+            $"Dias de locaÃ§Ã£o: {dias}\n" +
             $"Valor: R$ {valor:0.00}\n" +
             $"Forma de pagamento: {formaPagamento}\n" +
             $"Entrega: {entrega}\n",
@@ -211,7 +279,7 @@ public partial class NotificacaoPage : ContentPage
 
     private async void OnFilterClicked(object sender, EventArgs e)
     {
-        string action = await DisplayActionSheet("Filtrar Notificações", "Fechar", null, "HOJE", "ÚLTIMOS 7 DIAS", "TODAS AS NOTIFICAÇÕES");
+        string action = await DisplayActionSheet("Filtrar NotificaÃ§Ãµes", "Fechar", null, "HOJE", "ÃšLTIMOS 7 DIAS", "TODAS AS NOTIFICAÃ‡Ã•ES");
         if (action == null || action == "Fechar") return;
 
         switch (action)
@@ -220,11 +288,11 @@ public partial class NotificacaoPage : ContentPage
                 filtroAtual = "HOJE";
                 MostrarNotificacoes(todasNotificacoes.Where(n => n.Data.Date == DateTime.Today));
                 break;
-            case "ÚLTIMOS 7 DIAS":
+            case "ÃšLTIMOS 7 DIAS":
                 filtroAtual = "7DIAS";
                 MostrarNotificacoes(todasNotificacoes.Where(n => n.Data >= DateTime.Now.AddDays(-7) && n.Data.Date < DateTime.Today));
                 break;
-            case "TODAS AS NOTIFICAÇÕES":
+            case "TODAS AS NOTIFICAÃ‡Ã•ES":
                 filtroAtual = "TODAS";
                 MostrarNotificacoes(todasNotificacoes);
                 break;
@@ -233,14 +301,14 @@ public partial class NotificacaoPage : ContentPage
 
     private async void OnClearAllClicked(object sender, EventArgs e)
     {
-        bool confirm = await DisplayAlert("Confirmação",
-            "Tem certeza que deseja limpar todas as notificações?",
+        bool confirm = await DisplayAlert("ConfirmaÃ§Ã£o",
+            "Tem certeza que deseja limpar todas as notificaÃ§Ãµes?",
             "Sim", "Cancelar");
 
         if (confirm)
         {
             NotificationsStack.Children.Clear();
-            await DisplayAlert("Notificações", "Todas as notificações foram limpas.", "OK");
+            await DisplayAlert("NotificaÃ§Ãµes", "Todas as notificaÃ§Ãµes foram limpas.", "OK");
         }
     }
 

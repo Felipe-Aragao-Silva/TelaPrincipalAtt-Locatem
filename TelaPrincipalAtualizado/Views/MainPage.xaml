@@ -57,7 +57,7 @@
                     </HorizontalStackLayout>
 
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnMenuItemTapped" CommandParameter="Início"/>
+                        <TapGestureRecognizer Command="{Binding ComandoNavegar}" CommandParameter="Início"/>
                     </Grid.GestureRecognizers>
 
                     <VisualStateManager.VisualStateGroups>
@@ -91,7 +91,7 @@
                     </HorizontalStackLayout>
 
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnMenuItemTapped" CommandParameter="Carrinho"/>
+                        <TapGestureRecognizer Command="{Binding ComandoNavegar}" CommandParameter="Carrinho"/>
                     </Grid.GestureRecognizers>
 
                     <VisualStateManager.VisualStateGroups>
@@ -125,7 +125,7 @@
                     </HorizontalStackLayout>
 
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnMenuItemTapped" CommandParameter="Agendamento"/>
+                        <TapGestureRecognizer Command="{Binding ComandoNavegar}" CommandParameter="Agendamento"/>
                     </Grid.GestureRecognizers>
 
                     <VisualStateManager.VisualStateGroups>
@@ -159,7 +159,7 @@
                     </HorizontalStackLayout>
 
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnMenuItemTapped" CommandParameter="Histórico"/>
+                        <TapGestureRecognizer Command="{Binding ComandoNavegar}" CommandParameter="Histórico"/>
                     </Grid.GestureRecognizers>
 
                     <VisualStateManager.VisualStateGroups>
@@ -193,7 +193,7 @@
                     </HorizontalStackLayout>
 
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnMenuItemTapped" CommandParameter="Notificações"/>
+                        <TapGestureRecognizer Command="{Binding ComandoNavegar}" CommandParameter="Notificações"/>
                     </Grid.GestureRecognizers>
 
                     <VisualStateManager.VisualStateGroups>
@@ -228,7 +228,7 @@
                     </HorizontalStackLayout>
                     
                     <Grid.GestureRecognizers>
-                        <TapGestureRecognizer  Tapped="OnMenuItemTapped" CommandParameter="Suporte"/>
+                        <TapGestureRecognizer  Command="{Binding ComandoNavegar}" CommandParameter="Suporte"/>
                     </Grid.GestureRecognizers>
                     
                     <VisualStateManager.VisualStateGroups>
@@ -281,7 +281,7 @@
                                HorizontalOptions="Start" 
                                VerticalOptions="Center">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnMenuTapped"/>
+                            <TapGestureRecognizer Tapped="AoTocarMenu"/>
                             </Image.GestureRecognizers>
                         </Image>
 

@@ -18,7 +18,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TelaPrincipalAtualizado")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+4bab398dc9473728dd3b0cdfecb61fb8d1f3a882")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+8f8f85cf7d10a3cf01002264d79d9c76ce2f9bc3")]
 [assembly: System.Reflection.AssemblyProductAttribute("TelaPrincipalAtualizado")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TelaPrincipalAtualizado")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
